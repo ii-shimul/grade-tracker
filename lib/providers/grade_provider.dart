@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:grade_tracker/models/subject.dart';
 
 class GradeProvider with ChangeNotifier {
+  // Form input controllers to prevent recreating them on widget rebuilds
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController markController = TextEditingController();
+
   // Subjects list
   final List<Subject> _subjects = [];
 
@@ -10,6 +14,11 @@ class GradeProvider with ChangeNotifier {
 
   // Active navigation index
   int _currentNavigationIndex = 0;
+
+  void clearForm() {
+    nameController.clear();
+    markController.clear();
+  }
 
   // Getters
   List<Subject> get subjects => List.unmodifiable(_subjects);
@@ -72,5 +81,12 @@ class GradeProvider with ChangeNotifier {
     if (avg >= 65) return 'B';
     if (avg >= 50) return 'C';
     return 'F';
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    markController.dispose();
+    super.dispose();
   }
 }
