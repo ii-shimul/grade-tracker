@@ -1,30 +1,37 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:provider/provider.dart';
 import 'package:grade_tracker/main.dart';
+import 'package:grade_tracker/providers/grade_provider.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Navigation and theme smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(
+      ChangeNotifierProvider(
+        create: (_) => GradeProvider(),
+        child: const MyApp(),
+      ),
+    );
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify we are on the first tab ('Add Subject')
+    expect(find.descendant(of: find.byType(AppBar), matching: find.text('Add Subject')), findsOneWidget);
+    expect(find.text('Add Subject Form (Placeholder)'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Tap on the 'Subjects' navigation item
+    await tester.tap(find.byIcon(Icons.format_list_bulleted_rounded));
+    await tester.pumpAndSettle();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify screen changes to 'Subject List'
+    expect(find.text('Subject List'), findsOneWidget);
+    expect(find.text('Subject List (Placeholder)'), findsOneWidget);
+
+    // Tap on the 'Summary' navigation item
+    await tester.tap(find.byIcon(Icons.analytics_outlined));
+    await tester.pumpAndSettle();
+
+    // Verify screen changes to 'Summary'
+    expect(find.descendant(of: find.byType(AppBar), matching: find.text('Summary')), findsOneWidget);
+    expect(find.text('Summary & Analytics (Placeholder)'), findsOneWidget);
   });
 }
