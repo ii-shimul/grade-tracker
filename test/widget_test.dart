@@ -32,7 +32,7 @@ void main() {
 
     // Verify screen changes to 'Summary'
     expect(find.descendant(of: find.byType(AppBar), matching: find.text('Summary')), findsOneWidget);
-    expect(find.text('Summary & Analytics (Placeholder)'), findsOneWidget);
+    expect(find.text('No Summary Data Available'), findsOneWidget);
   });
 
   testWidgets('Form validation and adding subject test', (WidgetTester tester) async {
@@ -76,5 +76,13 @@ void main() {
     expect(find.text('History'), findsOneWidget);
     expect(find.text('Mark: 88/100'), findsOneWidget);
     expect(find.text('A'), findsOneWidget); // 88 is Grade A
+
+    // Go to Summary and check calculations
+    await tester.tap(find.byIcon(Icons.analytics_outlined));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Average Mark: 88.0%'), findsOneWidget);
+    expect(find.text('1'), findsNWidgets(2)); // Total subjects (1) and Passing subjects (1)
+    expect(find.text('100%'), findsOneWidget); // Passing rate
   });
 }

@@ -7,11 +7,8 @@ class Subject {
     required int mark,
   }) : _mark = mark;
 
-  /// Getter to retrieve the private mark field
   int get mark => _mark;
 
-  /// Getter for the letter grade based on the mark:
-  /// A (>= 80), B (>= 65), C (>= 50), F (otherwise)
   String get grade {
     if (_mark >= 80) {
       return 'A';

@@ -149,7 +149,6 @@ class SubjectListScreen extends StatelessWidget {
     );
   }
 
-  // Dynamic colors derived from theme colors for semantic grade badges
   Color _getGradeColor(BuildContext context, String grade) {
     final colorScheme = Theme.of(context).colorScheme;
     switch (grade) {

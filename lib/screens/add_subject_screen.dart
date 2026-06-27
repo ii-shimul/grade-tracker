@@ -6,7 +6,6 @@ import 'package:grade_tracker/providers/grade_provider.dart';
 class AddSubjectScreen extends StatelessWidget {
   const AddSubjectScreen({super.key});
 
-  // GlobalKey for form validation
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -21,7 +20,6 @@ class AddSubjectScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Welcome / Header banner
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(20.0),
@@ -57,8 +55,6 @@ class AddSubjectScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 32),
-
-              // Form fields
               Text(
                 'Enter Subject Details',
                 style: theme.textTheme.titleMedium?.copyWith(

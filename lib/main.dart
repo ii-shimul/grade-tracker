@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Watch GradeProvider to rebuild when theme changes
     final provider = context.watch<GradeProvider>();
 
     return MaterialApp(

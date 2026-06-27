@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  // Ultra-clean typography configuration
-  static const String fontFamily = 'Outfit'; // Premium look, defaults to system if not loaded
+  static const String fontFamily = 'Outfit';
 
-  // Light Theme Palette (HIFI Violet/Indigo scheme)
   static final ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
     colorScheme: ColorScheme.fromSeed(
-      seedColor: const Color(0xFF6366F1), // Indigo
+      seedColor: const Color(0xFF6366F1),
       brightness: Brightness.light,
       primary: const Color(0xFF4F46E5),
-      secondary: const Color(0xFF0EA5E9), // Sky blue accent
-      background: const Color(0xFFF8FAFC), // Slate background
+      secondary: const Color(0xFF0EA5E9),
+      background: const Color(0xFFF8FAFC),
       surface: Colors.white,
       onPrimary: Colors.white,
       onSecondary: Colors.white,
@@ -32,7 +30,7 @@ class AppTheme {
         color: Color(0xFF0F172A),
       ),
     ),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: Colors.white,
       elevation: 2,
       shadowColor: const Color(0xFF0F172A).withOpacity(0.05),
@@ -75,17 +73,16 @@ class AppTheme {
     ),
   );
 
-  // Dark Theme Palette (Sleek Slate/Carbon theme)
   static final ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
     colorScheme: ColorScheme.fromSeed(
-      seedColor: const Color(0xFF6366F1), // Indigo seed
+      seedColor: const Color(0xFF6366F1),
       brightness: Brightness.dark,
       primary: const Color(0xFF818CF8),
       secondary: const Color(0xFF38BDF8),
-      background: const Color(0xFF0B0F19), // Deep rich charcoal/blue
-      surface: const Color(0xFF151D30), // Lighter slate for cards/surfaces
+      background: const Color(0xFF0B0F19),
+      surface: const Color(0xFF151D30),
       onPrimary: const Color(0xFF0F172A),
       onSecondary: const Color(0xFF0F172A),
       onBackground: const Color(0xFFF1F5F9),
@@ -103,7 +100,7 @@ class AppTheme {
         color: Color(0xFFF1F5F9),
       ),
     ),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: const Color(0xFF151D30),
       elevation: 4,
       shadowColor: Colors.black.withOpacity(0.2),
